@@ -8,7 +8,6 @@ class CalendarsController < ApplicationController
 
   # 予定の保存
   def create
-    # binding.pry
     Plan.create(plan_params)
     redirect_to action: :index
   end
@@ -32,7 +31,7 @@ class CalendarsController < ApplicationController
 
     7.times do |x|
       today_plans = []
-      plans.each do |plan|
+      plan = plans.map do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
 
